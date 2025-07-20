@@ -14,29 +14,40 @@
         </div>
         <nav>
             <ul>
-                <li><a href="index.html">Menú</a></li>
-                <li><a href="cart.html">Carrito</a></li>
-                <li><a href="reviews.html">Comunidad</a></li>
+                <li><a href="index.html" class="active">Menú</a></li>
+                <li><a href="cart.html">Carrito <span id="cart-counter"></span></a></li>
+                <li><a href="orders.html">Pedidos</a></li>
                 <li><a href="profile.html">Perfil</a></li>
             </ul>
         </nav>
     </header>
     
     <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h1>EXPERIMENTA EL <span class="accent">CAFÉ DEL FUTURO</span></h1>
+                <p>Donde cada sorbo es una singularidad de sabor</p>
+                <div class="search-bar">
+                    <input type="text" placeholder="Buscar producto...">
+                    <button class="search-btn">⌖</button>
+                </div>
+            </div>
+            <div class="hero-particles"></div>
+        </section>
+        
         <section class="categories">
-            <h2>Categorías</h2>
+            <h2>CATEGORÍAS</h2>
             <div class="category-filter">
-                <button class="active" data-category="all">Todos</button>
-                <button data-category="coffee">Café</button>
-                <button data-category="cold">Bebidas frías</button>
-                <button data-category="bread">Pan</button>
-                <button data-category="snacks">Snacks</button>
-                <button data-category="cafe-free">Sin café</button>
+                <button class="active" data-category="all">TODOS</button>
+                <button data-category="coffee">CAFÉS</button>
+                <button data-category="cold">BEBIDAS FRÍAS</button>
+                <button data-category="special">ESPECIALES</button>
+                <button data-category="cafe-free">SIN CAFÉ</button>
+                <button data-category="snacks">SNACKS</button>
             </div>
         </section>
         
         <section class="products">
-            <!-- Los productos se cargarán dinámicamente con JS -->
             <div class="products-grid" id="products-container"></div>
         </section>
     </main>
@@ -49,5 +60,6 @@
     <script src="js/storage.js"></script>
     <script src="js/products.js"></script>
     <script src="js/app.js"></script>
+    <script src="js/search.js"></script>
 </body>
 </html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historial de Pedidos | COFFE SINGULARITY</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="assets/images/logo.png" alt="Coffee Singularity">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Menú</a></li>
+                <li><a href="cart.html">Carrito</a></li>
+                <li><a href="orders.html" class="active">Pedidos</a></li>
+                <li><a href="profile.html">Perfil</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main class="orders-container">
+        <h1>Historial de <span class="accent">Pedidos</span></h1>
+        <div class="timeline" id="orders-timeline">
+            <!-- Los pedidos se cargarán aquí dinámicamente -->
+            <div class="empty-orders">
+                <div class="hologram-icon">⎔</div>
+                <p>No hay registros temporales de pedidos</p>
+                <small>Los pedidos aparecerán aquí como ondas cuánticas</small>
+            </div>
+        </div>
+    </main>
+    
+    <footer>
+        <p>© 2025 COFFE SINGULARITY</p>
+        <a href="contact.html">Contacto</a>
+    </footer>
+
+    <script src="js/storage.js"></script>
+    <script src="js/orders.js"></script>
+</body>
+</html>

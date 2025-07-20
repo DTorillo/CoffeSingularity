@@ -112,7 +112,7 @@ function adjustCartQuantity(productId, change) {
 
 function checkout() {
     if (cart.length === 0) {
-        alert('Tu carrito está vacío');
+        showNotification('Tu carrito está vacío', 'error');
         return;
     }
     
@@ -138,5 +138,18 @@ function checkout() {
     updateCart();
     
     // Redirigir a página de confirmación
-    window.location.href = 'order-confirmation.html?id=' + newOrder.id;
+    window.location.href = `order-confirmation.html?id=${newOrder.id}&new=true`;
+}
+
+// Añadir esta función auxiliar
+function showNotification(message, type = 'success') {
+    const notification = document.createElement('div');
+    notification.className = `notification ${type}`;
+    notification.textContent = message;
+    document.body.appendChild(notification);
+    
+    setTimeout(() => {
+        notification.classList.add('fade-out');
+        setTimeout(() => notification.remove(), 500);
+    }, 3000);
 }

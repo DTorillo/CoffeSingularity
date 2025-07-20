@@ -42,14 +42,22 @@
     </footer>
     
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const urlParams = new URLSearchParams(window.location.search);
-            const orderId = urlParams.get('id');
+    document.addEventListener('DOMContentLoaded', () => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const orderId = urlParams.get('id');
+        const isNew = urlParams.get('new') === 'true';
+        
+        if (orderId) {
+            document.getElementById('order-id').textContent = `ID de pedido: #${orderId.toString().slice(-6)}`;
             
-            if (orderId) {
-                document.getElementById('order-id').textContent = `ID de pedido: #${orderId}`;
+            if (isNew) {
+                // Efecto especial para nuevos pedidos
+                const confetti = document.createElement('div');
+                confetti.className = 'quantum-confetti';
+                document.querySelector('.confirmation-card').appendChild(confetti);
             }
-        });
-    </script>
+        }
+    });
+</script>
 </body>
 </html>
