@@ -34,6 +34,21 @@ document.addEventListener('DOMContentLoaded', () => {
         secretBtn.onclick = unlockSecretMenu;
         document.body.appendChild(secretBtn);
     }
+
+    // Enlaces del menú de productos
+    document.querySelectorAll('.dropdown-menu a').forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const category = link.dataset.category;
+            if (category && document.getElementById('products-container')) {
+                loadProducts(category);
+                document.querySelectorAll('.category-filter button').forEach(btn => {
+                    btn.classList.toggle('active', btn.dataset.category === category);
+                });
+            }
+            toggleMenu();
+        });
+    });
 });
 
 function setupCategoryFilters() {
@@ -60,5 +75,12 @@ function unlockSecretMenu() {
         alert('¡Menú secreto desbloqueado!');
     } else if (phrase) {
         alert('Frase incorrecta. Intenta de nuevo.');
+    }
+}
+
+function toggleMenu() {
+    const navList = document.querySelector('nav ul');
+    if (navList) {
+        navList.classList.toggle('open');
     }
 }

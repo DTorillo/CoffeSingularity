@@ -1,0 +1,89 @@
+/* Navegación responsive */
+nav .menu-toggle {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+        position: absolute;
+        top: 70px;
+        right: 0;
+        background: rgba(15,22,33,0.95);
+        width: 200px;
+        transform: translateX(100%);
+        transition: transform 0.3s ease;
+    }
+    nav ul.open {
+        transform: translateX(0);
+    }
+    nav .menu-toggle {
+        display: block;
+        cursor: pointer;
+    }
+    nav .menu-toggle span {
+        display: block;
+        width: 25px;
+        height: 3px;
+        background: var(--accent-color);
+        margin: 5px 0;
+    }
+    nav ul li {
+        margin: 1rem;
+    }
+}
+
+/* Ajustes para la cuadrícula de productos */
+@media (max-width: 768px) {
+    .products-grid {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    }
+}
+@media (max-width: 480px) {
+    .products-grid {
+        grid-template-columns: 1fr;
+    }
+    .hero {
+        height: 250px;
+        padding: 1rem;
+    }
+    .search-bar {
+        flex-direction: column;
+    }
+    .search-bar input {
+        border-radius: 30px;
+        margin-bottom: 0.5rem;
+    }
+    .search-btn {
+        border-radius: 30px;
+        width: 100%;
+    }
+}
+
+/* Menú desplegable de productos */
+nav ul li.dropdown {
+    position: relative;
+}
+nav ul li.dropdown .dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: rgba(15,22,33,0.95);
+    list-style: none;
+    padding: 0;
+    min-width: 150px;
+    z-index: 200;
+}
+nav ul li.dropdown .dropdown-menu li a {
+    display: block;
+    padding: 0.5rem 1rem;
+}
+nav ul li.dropdown:hover .dropdown-menu {
+    display: block;
+}
+@media (max-width: 768px) {
+    nav ul li.dropdown .dropdown-menu {
+        position: static;
+    }
+}

@@ -12,9 +12,24 @@
         <div class="logo">
             <img src="assets/images/logo.png" alt="Coffee Singularity">
         </div>
+        <div class="menu-toggle" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
         <nav>
             <ul>
                 <li><a href="index.html" class="active">Menú</a></li>
+                <li class="dropdown">
+                    <a href="#">Productos ▾</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#" data-category="coffee">Cafés</a></li>
+                        <li><a href="#" data-category="cold">Bebidas Frías</a></li>
+                        <li><a href="#" data-category="special">Especiales</a></li>
+                        <li><a href="#" data-category="cafe-free">Sin Café</a></li>
+                        <li><a href="#" data-category="snacks">Snacks</a></li>
+                    </ul>
+                </li>
                 <li><a href="cart.html">Carrito <span id="cart-counter"></span></a></li>
                 <li><a href="reviews.html">Comunidad</a></li>
                 <li><a href="orders.html">Pedidos</a></li>
