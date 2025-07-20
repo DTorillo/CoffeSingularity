@@ -14,13 +14,29 @@ function loadProducts(category = 'all') {
     // Añadir productos secretos si el usuario sabe la frase
     if (localStorage.getItem('unlockSecrets') === 'true') {
         const secretProducts = [
-            { 
-                id: 99, 
-                name: 'White Noise Brew', 
-                description: 'Mezcla desconocida, diseñada por IA al azar. Cada vez es única.', 
-                price: 7.99, 
+            {
+                id: 99,
+                name: 'White Noise Brew',
+                description: 'Mezcla desconocida, diseñada por IA al azar. Cada vez es única.',
+                price: 7.99,
                 category: 'secret',
                 image: 'assets/images/white-noise.jpg'
+            },
+            {
+                id: 100,
+                name: 'Combo Turing Completo',
+                description: 'Latte Neural Net + Muffin Möbius + Galleta IA.',
+                price: 9.99,
+                category: 'secret',
+                image: 'assets/images/combo-turing-completo.jpg'
+            },
+            {
+                id: 101,
+                name: 'Capsula Holográfica',
+                description: 'Espresso servido en espacio VR privado con visualizaciones sonoras.',
+                price: 12.50,
+                category: 'secret',
+                image: 'assets/images/capsula-holografica.jpg'
             }
         ];
         filteredProducts = [...filteredProducts, ...secretProducts];
