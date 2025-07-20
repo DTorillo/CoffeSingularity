@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comunidad | COFFE SINGULARITY</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="assets/images/logo.png" alt="Coffee Singularity">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Menú</a></li>
+                <li><a href="cart.html">Carrito <span id="cart-counter"></span></a></li>
+                <li><a href="reviews.html" class="active">Comunidad</a></li>
+                <li><a href="orders.html">Pedidos</a></li>
+                <li><a href="profile.html">Perfil</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="reviews-container">
+        <div class="reviews-header">
+            <h1>COMUNIDAD <span class="accent">CUÁNTICA</span></h1>
+        </div>
+
+        <div class="reviews-grid">
+            <div class="write-review-card">
+                <h2>Escribe una reseña</h2>
+                <form id="review-form">
+                    <div class="form-group">
+                        <label for="review-product">Producto</label>
+                        <select id="review-product" required></select>
+                    </div>
+                    <div class="form-group">
+                        <label>Calificación</label>
+                        <div class="quantum-rating">
+                            <input type="radio" id="rating-5" name="rating" value="5">
+                            <label for="rating-5">★</label>
+                            <input type="radio" id="rating-4" name="rating" value="4">
+                            <label for="rating-4">★</label>
+                            <input type="radio" id="rating-3" name="rating" value="3">
+                            <label for="rating-3">★</label>
+                            <input type="radio" id="rating-2" name="rating" value="2">
+                            <label for="rating-2">★</label>
+                            <input type="radio" id="rating-1" name="rating" value="1">
+                            <label for="rating-1">★</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="review-comment">Comentario</label>
+                        <textarea id="review-comment" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-review"><span class="icon">✎</span> Publicar</button>
+                </form>
+            </div>
+            <div class="reviews-list" id="reviews-list"></div>
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2025 COFFE SINGULARITY</p>
+        <a href="contact.html">Contacto</a>
+    </footer>
+
+    <script src="js/storage.js"></script>
+    <script src="js/reviews.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
