@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle de Producto | COFFE SINGULARITY</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="assets/images/logo.png" alt="Coffee Singularity">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Menú</a></li>
+                <li><a href="cart.html">Carrito</a></li>
+                <li><a href="reviews.html">Comunidad</a></li>
+                <li><a href="profile.html">Perfil</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main class="product-detail-container">
+        <div id="product-detail"></div>
+    </main>
+    
+    <footer>
+        <p>© 2023 COFFE SINGULARITY</p>
+        <a href="contact.html">Contacto</a>
+    </footer>
+    
+    <script src="js/storage.js"></script>
+    <script src="js/products.js"></script>
+    <script src="js/cart.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const productId = parseInt(urlParams.get('id'));
+            
+            if (productId) {
+                loadProductDetail(productId);
+            } else {
+                window.location.href = 'index.html';
+            }
+        });
+        
+        function loadProductDetail(productId) {
+            const products = JSON.parse(localStorage.getItem('products')) || [];
+            const product = products.find(p => p.id === productId);
+            const detailContainer = document.getElementById('product-detail');
+            
+            if (product) {
+                detailContainer.innerHTML = `
+                    <div class="product-image-container">
+                        <img src="${product.image}" alt="${product.name}">
+                    </div>
+                    <div class="product-info-detail">
+                        <h1>${product.name}</h1>
+                        <p class="category">${getCategoryName(product.category)}</p>
+                        <p class="description">${product.description}</p>
+                        <p class="price">$${product.price.toFixed(2)}</p>
+                        <div class="quantity-selector">
+                            <button onclick="adjustQuantity(-1)">-</button>
+                            <span id="quantity">1</span>
+                            <button onclick="adjustQuantity(1)">+</button>
+                        </div>
+                        <button class="add-to-cart" onclick="addToCartFromDetail(${product.id})">Añadir al Carrito</button>
+                    </div>
+                `;
+            } else {
+                detailContainer.innerHTML = '<p>Producto no encontrado</p>';
+                setTimeout(() => window.location.href = 'index.html', 2000);
+            }
+        }
+        
+        function adjustQuantity(change) {
+            const quantityElement = document.getElementById('quantity');
+            let quantity = parseInt(quantityElement.textContent);
+            quantity += change;
+            if (quantity < 1) quantity = 1;
+            quantityElement.textContent = quantity;
+        }
+        
+        function addToCartFromDetail(productId) {
+            const quantity = parseInt(document.getElementById('quantity').textContent);
+            addToCart(productId, quantity);
+            alert(`${quantity} ${quantity > 1 ? 'productos añadidos' : 'producto añadido'} al carrito`);
+        }
+        
+        function getCategoryName(categoryKey) {
+            const categories = {
+                'coffee': 'Café Caliente',
+                'cold': 'Bebida Fría',
+                'special': 'Creación Especial',
+                'cafe-free': 'Sin Café',
+                'snacks': 'Snack',
+                'secret': 'Secreto'
+            };
+            return categories[categoryKey] || categoryKey;
+        }
+    </script>
+</body>
+</html>

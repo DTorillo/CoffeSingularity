@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito | COFFE SINGULARITY</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="assets/images/logo.png" alt="Coffee Singularity">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Menú</a></li>
+                <li><a href="cart.html">Carrito</a></li>
+                <li><a href="reviews.html">Comunidad</a></li>
+                <li><a href="profile.html">Perfil</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main class="cart-container">
+        <h1>Tu Carrito</h1>
+        
+        <div class="cart-items" id="cart-items">
+            <!-- Los items del carrito se cargarán aquí dinámicamente -->
+        </div>
+        
+        <div class="cart-summary">
+            <h2>Resumen</h2>
+            <div class="summary-details">
+                <p>Subtotal: <span id="subtotal">$0.00</span></p>
+                <p>IVA (10%): <span id="tax">$0.00</span></p>
+                <p class="total">Total: <span id="total">$0.00</span></p>
+            </div>
+            <button id="checkout-btn" class="checkout-btn">Realizar Pedido</button>
+        </div>
+    </main>
+    
+    <footer>
+        <p>© 2023 COFFE SINGULARITY</p>
+        <a href="contact.html">Contacto</a>
+    </footer>
+    
+    <script src="js/storage.js"></script>
+    <script src="js/cart.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            if (!localStorage.getItem('currentUser')) {
+                window.location.href = 'login.html';
+            }
+            
+            loadCartItems();
+            
+            document.getElementById('checkout-btn').addEventListener('click', () => {
+                checkout();
+            });
+        });
+    </script>
+</body>
+</html>
