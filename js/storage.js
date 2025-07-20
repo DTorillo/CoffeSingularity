@@ -3,7 +3,13 @@ function initializeStorage() {
     if (!localStorage.getItem('initialized')) {
         // Usuarios
         const users = [
-            { id: 1, name: 'Admin', email: 'admin@coffee.com', password: 'admin123' }
+            { 
+                id: 1, 
+                name: 'Admin', 
+                email: 'admin@coffee.com', 
+                password: 'admin123',
+                joinDate: new Date().toISOString() // Añadir esta línea
+            }
         ];
         localStorage.setItem('users', JSON.stringify(users));
         
