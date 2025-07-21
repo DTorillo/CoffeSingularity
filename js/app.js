@@ -7,10 +7,13 @@ document.addEventListener('DOMContentLoaded', () => {
     // Actualizar contador del carrito
     updateCartCounter();
     
-    // Cargar productos si estamos en la página principal
-    if (document.getElementById('products-container')) {
-        loadProducts();
-        setupCategoryFilters();
+    // Cargar productos por categoría en la página principal
+    if (document.getElementById('coffee-products')) {
+        loadProducts('coffee', 'coffee-products');
+        loadProducts('cold', 'cold-products');
+        loadProducts('special', 'special-products');
+        loadProducts('cafe-free', 'cafe-free-products');
+        loadProducts('snacks', 'snacks-products');
     }
     
     // Botón secreto
@@ -36,26 +39,16 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-function setupCategoryFilters() {
-    const filterButtons = document.querySelectorAll('.category-filter button');
-    
-    filterButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            filterButtons.forEach(btn => btn.classList.remove('active'));
-            button.classList.add('active');
-            
-            const category = button.dataset.category;
-            loadProducts(category);
-        });
-    });
-}
-
 function unlockSecretMenu() {
     const phrase = prompt("¿Cuál es la frase secreta?");
     if (phrase && phrase.toLowerCase() === "entropía baja, café alto") {
         localStorage.setItem('unlockSecrets', 'true');
-        if (document.getElementById('products-container')) {
-            loadProducts();
+        if (document.getElementById('coffee-products')) {
+            loadProducts('coffee', 'coffee-products');
+            loadProducts('cold', 'cold-products');
+            loadProducts('special', 'special-products');
+            loadProducts('cafe-free', 'cafe-free-products');
+            loadProducts('snacks', 'snacks-products');
         }
         alert('¡Menú secreto desbloqueado!');
     } else if (phrase) {
